@@ -1,0 +1,121 @@
+
+* , *::after ,  *::before{
+    box-sizing: border-box;
+    margin:0px;
+    padding:0px;
+}
+
+:root{
+    --cell-size:100px;
+    --mark-size:calc(var(--cell-size)*.9);
+    --color-board:white;
+}
+
+.message-view{
+    background-color: rgba(0, 0, 0, .9);
+    width:100%;
+    height:100%;
+    position: fixed;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    font-size:3rem;
+    color: white;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index:4;
+}
+
+.message-view button {
+    padding:10px;
+    background-color: white;
+    color: black;
+    font-size:20px;
+}
+
+
+.show {
+display: flex;
+}
+
+
+
+
+.board {
+    height:100vh;
+    width:100vh;
+    display: grid;
+    background-color: var(--color-board);
+    justify-content: center;
+    align-items: center;
+    align-content:center;
+    grid-template-columns: repeat(3,auto);
+
+}
+
+.cell {
+    border:1px solid black;
+    width:var(--cell-size);
+    height: var(--cell-size);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.cell:first-child ,.cell:nth-child(2),.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:last-child , .cell:nth-child(3n+4) ,.cell:nth-child(8) {
+    border-bottom: none;
+}
+
+.cell:nth-child(3n+3){
+    border-right: none;
+}
+
+.cell:first-child , .cell:nth-child(n+3){
+    border-left: none;
+}
+
+
+.x::after ,.x::before{
+    content:"";
+    width:calc(var(--mark-size)*.15);
+    height:var(--mark-size);
+    background-color: rgb(0, 0, 0);
+}
+
+.x::before{
+    transform: rotate(45deg);
+}
+
+.x::after{
+    transform: rotate(-45deg);
+}
+
+.circle::after , .circle::before , .x::before , .x::after{
+    position: absolute;
+}
+
+
+.circle::after {
+    content:"";
+    width:var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+    border-radius:50%;
+}
+
+.circle::before{
+    content:"";
+    width:calc(var(--mark-size)*.6) ;
+    height: calc(var(--mark-size)*.6);
+    background-color:var(--color-board);
+    border-radius:50%;
+    z-index:2;
+}
