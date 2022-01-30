@@ -46,7 +46,7 @@ display: flex;
 
 .board {
     height:100vh;
-    width:100vh;
+    width:100%;
     display: grid;
     background-color: var(--color-board);
     justify-content: center;
